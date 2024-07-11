@@ -1,0 +1,6 @@
+Dynamic Programming : https://docs.microsoft.com/en-us/dotnet/framework/reflection-and-codedom/reflection
+MEF : https://docs.microsoft.com/en-us/dotnet/framework/mef/
+
+
+Dump file:
+https://www.codeproject.com/Tips/1275304/Automatically-Create-Dump-File-When-Program-Hangs

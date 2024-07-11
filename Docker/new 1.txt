@@ -1,0 +1,110 @@
+docker run docker/whalesay cowsay hello
+docker run  busybox
+
+docker run
+docker ps - list of container
+
+
+check which OS u are
+docker run -it centos bash
+cat /etc/*release*
+docker run -d centos sleep 20
+
+///// docker PID
+docker exec containerid ps -eaf
+
+// docker info  -> get all infor driver, root dir etc.
+
+
+docker ps -a
+docker run -d centos sleep 2000
+docker stop "name/id"
+
+docker rm by id or name
+multiple remove
+docker rm "id" "id2" "id3"
+
+docker images
+docker rmi by id or name
+delete image whose container exist.
+docker pull
+
+
+docker run redis:4.0
+docker exec id cat /etc/*release*
+
+ docker run kodekloud/simple-pront-docker
+-i = interractive mode
+-t = terminal mode
+
+port mapping
+-p 80:5000
+
+
+storage
+/var/lib/mysql
+
+docker run -v /
+
+find internal ip
+docker inpsect containername
+logs
+docker logs container
+
+docker run ubuntu sleep 1500
+use -d to dttach
+docker attach id
+
+
+docker run timer -> to print time use -d to run in deattach mode
+to see output use attach command
+
+docker run  -p 8080:8080 jenkins
+docker run  -p 8080:8080 -v currentfolder:/var/jenkins_home -u root jenkins  => see from jenkin docker hub
+
+
+start creating dokcer images
+
+docker run -it ubuntu bash - do first without  -p  5000:5000
+apt-get update
+apt-get install -y python3
+apt-get install python3-pip
+pip3 install flask
+cat > /opt/app.py
+FLASK_APP=app.py flask run --host=0.0.0.0
+history
+
+create docker file with history
+
+docker build . -t my-web-app
+docker build . -f DokcerFile2 -t my-web-app   -> different filename
+
+
+push to docker hub
+docker push my-web-app
+tag image first
+docker build . -t ashusciex/my-web-app
+dokcer push ashutoshsciex/my-web-app
+
+
+docker build . -t voting-app
+docker run -p 5000:80 voting-app
+
+docker run -d --name=redis redis
+docker run -p 5000:80 --link redis:redis voting-app
+
+docker run -d -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres --name=db postgres:9.4
+
+docker build . -t worker-app
+docker run --link redis:redis --link db:db worker-app
+
+docker build . -t result-app
+docker run -p 5001:80 --link db:db result-app
+
+
+docker-compose down
+docker system prune
+docker volume prune
+
+Remove all images
+docker rmi -f $(docker images -a -q)

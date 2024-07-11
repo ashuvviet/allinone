@@ -1,0 +1,33 @@
+﻿<div class="col-3 border p-3">
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <td>First Name</td>
+                <td>@Employee.FirstName</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>@Employee.LastName</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>@Employee.Email</td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="button" class="btn btn-danger" style="width:100px;" value="Delete" @onclick="DeleteEmployee"/>
+</div>
+
+@code {
+
+    [Parameter]
+    public Employee Employee { get; set; }
+
+    [Parameter]
+    public EventCallback<Guid> OnDelete { get; set; }
+
+    private void DeleteEmployee(MouseEventArgs e)
+    {
+        OnDelete.InvokeAsync(Employee.Id);
+    }
+}

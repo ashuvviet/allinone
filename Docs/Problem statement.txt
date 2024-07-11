@@ -1,0 +1,36 @@
+Problem statement: Movie booking service -moviebooking-api
+
+ 
+
+Develop a RESTful api with language and framework of your choice (C#, Dotnet Core preferred)  
+1. three controllers - MovieController, Cinemacontroller and CinemaMoviecontroller. 
+ 
+
+Create api endpoints for required operations. 
+
+Use Mysql docker image. Model the entities and relationships in appropriate collections for storage and retrieval. 
+
+Dockerize the application. 
+
+Write docker-compose file to build and run MongoDb and application containers together. 
+
+Postman collection to demo api functionality pointing to localhost. 
+
+Write unit tests for any one module/class. 
+
+Main Admin - System Admin
+
+1. Movie - Master Data
+2. Cinema - Master Data
+
+cinema admin
+
+3. to assign the timing of the show
+
+customer
+
+4. Find Movie by cinema
+4. find movie by city.
+
+
+Model -> DbContext -> repository -> Command/Query etc -> Controller

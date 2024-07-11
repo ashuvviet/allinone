@@ -1,0 +1,48 @@
+﻿@page "/employeedashboard"
+@inject NavigationManager _NavigationManager;
+@inject IEmployeeService _EmployeeService;
+
+<h3>Employee Dashboard</h3>
+
+<div>
+    @* <a href="/createemployee">Create new Employee</a> *@
+    <button @onclick="OnCreateNewEmployee">Create new Employee</button>
+</div>
+<br />
+<div class="row">
+   
+                @foreach (var employee in Employees)
+                {
+                    <Employee_Dashboard.Pages.Shared._IndividualEmployee Employee="employee" OnDelete="AfterDelete"></Employee_Dashboard.Pages.Shared._IndividualEmployee>
+                }
+          
+        <br />
+        <br />
+</div>
+
+
+@code {
+    IEnumerable<Employee> Employees;
+
+    private CreateEmployee createEmployee;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Employees.Add(new Employee() { Id = Guid.NewGuid(), FirstName = "test1", LastName = "last", Email = "tes1@gmail.com" });
+        // Employees.Add(new Employee() { Id = Guid.NewGuid(), FirstName = "test2", LastName = "last", Email = "test2@gmail.com" });
+        // Employees.Add(new Employee() { Id = Guid.NewGuid(), FirstName = "test3", LastName = "last", Email = "test3@gmail.com" });
+        // Employees.Add(new Employee() { Id = Guid.NewGuid(), FirstName = "test4", LastName = "last", Email = "test4@gmail.com" });
+        Employees = await _EmployeeService.Get();
+    }
+
+    private void OnCreateNewEmployee(MouseEventArgs e)
+    {
+        _NavigationManager.NavigateTo("/createemployee");
+
+    }
+
+    protected async Task AfterDelete(Guid id)
+    {
+        await _EmployeeService.Delete(id);
+    }
+}

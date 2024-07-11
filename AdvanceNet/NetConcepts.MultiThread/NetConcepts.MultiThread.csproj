@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath></OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NetConcepts.Model\NetConcepts.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="NetConcepts.Model">
+      <HintPath>..\NetConcepts.Model\bin\Debug\net5.0\NetConcepts.Model.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

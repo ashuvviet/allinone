@@ -1,0 +1,45 @@
+#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+
+WORKDIR /app
+
+EXPOSE 80
+
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+
+WORKDIR /src
+
+COPY ["nuget.config", "."]
+COPY ["moviebooking-api/moviebooking-api.csproj", "moviebooking-api/"]
+
+RUN dotnet restore "moviebooking-api/moviebooking-api.csproj"
+
+COPY . .
+
+WORKDIR "/src/moviebooking-api"
+
+RUN dotnet build "moviebooking-api.csproj" -c Release -o /app/build
+
+FROM build AS publish
+
+RUN dotnet publish "moviebooking-api.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+
+WORKDIR /app
+
+# Add nonroot user
+RUN useradd -ms /bin/bash 1000
+# Grant privileges to the non-root user to bind to port 80
+RUN apt-get update \
+    && apt-get install -y libcap2-bin \
+    && setcap 'cap_net_bind_service=+ep' /usr/share/dotnet/dotnet
+RUN chown -R 1000:1000 /app
+RUN chmod -R 755 /app
+
+COPY --from=publish /app/publish .
+
+ENTRYPOINT ["dotnet", "moviebooking-api.dll"]
+
+USER 1000

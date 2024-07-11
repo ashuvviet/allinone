@@ -1,0 +1,8 @@
+<Project>
+	<ItemGroup>
+		<PackageReference Update="Microsoft.Composition" Version="1.0.31" />
+		<PackageReference Update="System.Runtime.Loader" Version="4.3.0" />
+		<PackageReference Update="Unity" Version="5.11.10" />
+    <PackageReference Update="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+</Project>

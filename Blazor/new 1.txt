@@ -1,0 +1,13 @@
+blazor server project
+
+blazor client project
+
+understand default home page.
+create new razor component and add in navmenu by adding route to it on page.
+
+show one way data binding by creating new model
+and use <input type="number" value="@Product.Price"
+
+show two way binding
+by using @bind-value="@Product.Price"  - this works only when u click outside
+use @bind-value="@Product.Price"  @bind-value:event=="oninput" to get realtime update.

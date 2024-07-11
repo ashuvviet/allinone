@@ -1,0 +1,37 @@
+ var i = new C();
+            switch (i)
+            {
+                //case A n when (n is A):
+                //    Console.WriteLine($"I am 7 or above: {n}");
+                //    break;
+
+                case A n when (n is B):
+                    Console.WriteLine($"I am between 4 and 6: {n}");
+                    break;
+
+                case A n when (n is C):
+                    Console.WriteLine($"I am 3 or less: {n}");
+                    break;
+            }
+
+#nullable enable  
+
+public State PerformOperation(Operation command) =>
+   command switch
+   {
+       Operation.SystemTest => RunDiagnostics(),
+       Operation.Start => StartSystem(),
+       Operation.Stop => StopSystem(),
+       Operation.Reset => ResetToReady(),
+       _ => throw new ArgumentException("Invalid enum value for command", nameof(command)),
+   };
+
+string WaterState(int tempInFahrenheit) =>
+    tempInFahrenheit switch
+    {
+        (> 32) and (< 212) => "liquid",
+        < 32 => "solid",
+        > 212 => "gas",
+        32 => "solid/liquid transition",
+        212 => "liquid / gas transition",
+    };

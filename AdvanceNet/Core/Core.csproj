@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Composition" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="System.Runtime.Loader" />
+    <PackageReference Include="Unity" />
+  </ItemGroup>
+
+</Project>

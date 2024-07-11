@@ -1,0 +1,30 @@
+<Project>
+	<PropertyGroup>
+		<Authors>Ashutosh</Authors>
+		<Owners>MyCompnay</Owners>
+		<RequireLicenseAcceptance>false</RequireLicenseAcceptance>
+		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+		<Version>1.0.0</Version>
+		<InformationalVersion>1.0.0</InformationalVersion>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<FileVersion>1.0.0</FileVersion>
+		<Copyright>©2022 MyCompnay</Copyright>
+		<SignAssembly>false</SignAssembly>
+		<Description>Shared library for components</Description>
+	</PropertyGroup>
+	<PropertyGroup>
+		<PackageVersion>1.0.1</PackageVersion>
+		<NugetUniqueFolder>NuGet</NugetUniqueFolder>
+		<PackageOutputPath>$(MSBuildThisFileDirectory)$(NugetUniqueFolder)</PackageOutputPath>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<IncludeSource>True</IncludeSource>
+		<IncludeSymbols>True</IncludeSymbols>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net5.0</TargetFramework>
+		<ApplicationIcon />
+		<StartupObject />
+	</PropertyGroup>
+</Project>

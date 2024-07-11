@@ -1,0 +1,27 @@
+﻿@page "/createemployee"
+@inject IEmployeeService _EmployeeService
+@inject NavigationManager _NavigationManager
+<h2 class="text-success">New Employee</h2>
+
+<div class="row">
+    <div class="col-6 pt-4">
+        FirstName: <input type="text" @bind-value="Employee.FirstName" /> <br /> <br />
+        LastName : <input type="text" @bind-value="Employee.LastName" /> <br /> <br />
+        Email    : <input type="text" @bind-value="Employee.Email" @bind-value:event="oninput" /><br /> <br />
+        <button @onclick="OnCreate">Create</button>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public EventCallback<Employee> OnCreateEmployee { get; set; }
+
+    Employee Employee = new Employee();
+
+    protected async Task OnCreate()
+    {
+        await _EmployeeService.Create(Employee.FirstName, Employee.LastName, Employee.Email);
+        _NavigationManager.NavigateTo("/employeedashboard");
+    }
+}
