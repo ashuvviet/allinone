@@ -2,7 +2,7 @@
 
 using Azure.Messaging.ServiceBus;
 
-var connectionString = "Endpoint=sb://demo8dec.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=4ivGTspnZTdjoZ3YpGjI2cmNOCZRnKA3R+ASbHN06uw=";
+var connectionString = "";
 
 var queueName = "q1";
 
