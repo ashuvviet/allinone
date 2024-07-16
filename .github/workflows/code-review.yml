@@ -16,6 +16,7 @@ jobs:
       id: get_diff
       run: |
         echo "Fetching diff..."
+        git fetch origin master
         git diff origin/master... > diff.txt
         echo "::set-output name=diff::$(cat diff.txt)"
 
