@@ -26,7 +26,7 @@ jobs:
         python3 .github/workflows/code_review.py "${{ steps.get_diff.outputs.diff }}" > comments.txt
 
     - name: Post comments
-      uses: ashuvviet/create-or-update-comment@v1
+      uses: ashuvviet/allinone@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         issue-number: ${{ github.event.pull_request.number }}
