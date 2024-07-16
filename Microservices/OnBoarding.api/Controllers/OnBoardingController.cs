@@ -83,9 +83,9 @@ namespace OnBoarding.api.Controllers
             return await _mediator.Send(new DeleteEmployeeCommand() { Id = id });
         }
 
-        //[HttpPut]
-        //public async Task<IActionResult> Put([FromBody]EmployeeDto employee) =>
-        //    await _mediator.Send(new UpdateEmployeeCommand() { Employee = employee });
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody]EmployeeDto employee) =>
+           await _mediator.Send(new UpdateEmployeeCommand() { Employee = employee });
 
         //[HttpDelete]
         //public async Task<IActionResult> Delete([FromBody]EmployeeDto employee) =>
