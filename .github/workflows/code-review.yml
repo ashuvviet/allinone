@@ -1,0 +1,35 @@
+name: Auto Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Get diff
+      id: get_diff
+      run: |
+        echo "Fetching diff..."
+        git diff origin/main... > diff.txt
+        echo "::set-output name=diff::$(cat diff.txt)"
+
+    - name: Run code review
+      id: run_review
+      run: |
+        echo "Running code review..."
+        python3 .github/workflows/code_review.py "${{ steps.get_diff.outputs.diff }}" > comments.txt
+
+    - name: Post comments
+      uses: peter-evans/create-or-update-comment@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        issue-number: ${{ github.event.pull_request.number }}
+        body: |
+          ### Code Review Comments
+          $(cat comments.txt)
