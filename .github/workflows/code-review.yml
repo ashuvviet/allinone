@@ -16,7 +16,7 @@ jobs:
       id: get_diff
       run: |
         echo "Fetching diff..."
-        git diff ashuvviet/allinone... > diff.txt
+        git diff origin/master... > diff.txt
         echo "::set-output name=diff::$(cat diff.txt)"
 
     - name: Run code review
