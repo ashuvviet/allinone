@@ -2,8 +2,8 @@ import sys
 import openai
 
 # Ensure you have your Azure OpenAI API key and endpoint set up
-api_key = "971ec1b405084f5c9fe4da9d135c4cae"
-endpoint = "https://becopenaidev6.openai.azure.com/"
+api_key = ""
+endpoint = ""
 
 # Function to call Azure OpenAI
 def get_code_review_comments(diff):
