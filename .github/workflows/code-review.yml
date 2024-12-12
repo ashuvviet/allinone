@@ -10,13 +10,14 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Get diff
       id: get_diff
       run: |
         echo "Fetching diff..."
-        git diff origin/main... > diff.txt
+        git fetch origin master
+        git diff origin/master... > diff.txt
         echo "::set-output name=diff::$(cat diff.txt)"
 
     - name: Run code review
@@ -26,7 +27,7 @@ jobs:
         python3 .github/workflows/code_review.py "${{ steps.get_diff.outputs.diff }}" > comments.txt
 
     - name: Post comments
-      uses: peter-evans/create-or-update-comment@v1
+      uses: ashuvviet/allinone@child1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         issue-number: ${{ github.event.pull_request.number }}
